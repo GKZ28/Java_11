@@ -3,7 +3,8 @@ package ru.netology.qa65;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TodosTest {
 
@@ -11,7 +12,7 @@ class TodosTest {
     public void shouldAddThreeTasksOfDifferentType() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
 
-        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Epic epic = new Epic(55, subtasks);
 
         Meeting meeting = new Meeting(
@@ -27,9 +28,16 @@ class TodosTest {
         todos.add(epic);
         todos.add(meeting);
 
-        Task[] expected = { simpleTask, epic, meeting };
+        Task[] expected = {simpleTask, epic, meeting};
         Task[] actual = todos.findAll();
         Assertions.assertArrayEquals(expected, actual);
+
+        assertTrue(meeting.matches("Выкатка"));
+        assertFalse(meeting.matches("бочка"));
+        assertTrue(simpleTask.matches("Позвонить"));
+        assertFalse(simpleTask.matches("Трубка"));
+        assertTrue(epic.matches("Молоко"));
+        assertFalse(epic.matches("Задача"));
     }
 
 }

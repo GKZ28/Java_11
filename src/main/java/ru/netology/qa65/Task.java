@@ -6,11 +6,11 @@ public class Task {
 
     protected int id;
 
-    public Task (int id) {
+    public Task(int id) {
         this.id = id;
     }
 
-    public int getId () {
+    public int getId() {
         return id;
     }
 
@@ -25,6 +25,10 @@ public class Task {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public boolean matches(String query) {
+        return false;
     }
 
 }
