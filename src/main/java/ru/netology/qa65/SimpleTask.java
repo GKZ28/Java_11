@@ -1,9 +1,9 @@
 package ru.netology.qa65;
 
-public class simpleTask extends Task {
+public class SimpleTask extends Task {
     protected String title;
 
-    public simpleTask (int id, String title) {
+    public SimpleTask (int id, String title) {
         super(id);
         this.title = title;
     }
