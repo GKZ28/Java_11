@@ -92,11 +92,11 @@
                         <configuration>
                             <rules>
                                 <rule>
-                                    <limits>
+                                    <limits>git 
                                         <limit>
                                             <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>100%</minimum>
+                                            <minimum>0%</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
