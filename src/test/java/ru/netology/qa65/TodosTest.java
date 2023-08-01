@@ -38,6 +38,17 @@ class TodosTest {
         assertFalse(simpleTask.matches("Трубка"));
         assertTrue(epic.matches("Молоко"));
         assertFalse(epic.matches("Задача"));
+
+        // тесты на метод search
+
+        Task[] result1 = todos.search("Молоко");  // если запрос находит
+        Assertions.assertEquals(1, result1.length);
+
+        Task[] result2 = todos.search("Кефир");   // если запрос не находит
+        Assertions.assertEquals(0, result2.length);
+
+
     }
+
 
 }
