@@ -14,6 +14,7 @@ class TodosTest {
     Epic epic = new Epic(55, subtasks);
 
     Meeting meeting = new Meeting(
+
             555,
             "Выкатка 3й версии приложения",
             "Приложение НетоБанка",
@@ -34,6 +35,7 @@ class TodosTest {
         Task[] expected = {simpleTask, epic, meeting};
         Task[] actual = todos.findAll();
         Assertions.assertArrayEquals(expected, actual);
+
     }
 
     @Test
@@ -45,12 +47,13 @@ class TodosTest {
         assertFalse(simpleTask.matches("Трубка"));
         assertTrue(epic.matches("Молоко"));
         assertFalse(epic.matches("Задача"));
+
     }
 
 
     @Test
 
-    public void searchTest() {
+    public void searchTestFind() {
 
         todos.add(simpleTask);
         todos.add(epic);
@@ -58,12 +61,18 @@ class TodosTest {
 
         Task[] result1 = todos.search("Яйца");  // если запрос находит
         Assertions.assertEquals(1, result1.length);
+    }
 
+    @Test
+    public void searchTestNotFind() {
+
+        todos.add(simpleTask);
+        todos.add(epic);
+        todos.add(meeting);
+git 
         Task[] result2 = todos.search("Кефир");   // если запрос не находит
         Assertions.assertEquals(0, result2.length);
 
-
     }
-
 
 }
