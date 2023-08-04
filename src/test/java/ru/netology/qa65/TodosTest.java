@@ -22,6 +22,7 @@ class TodosTest {
 
     Todos todos = new Todos();
 
+
     @Test
     public void shouldAddThreeTasksOfDifferentType() {
 
@@ -36,7 +37,7 @@ class TodosTest {
     }
 
     @Test
-    public void mathesTest() {
+    public void matchesTest() {
 
         assertTrue(meeting.matches("Выкатка"));
         assertFalse(meeting.matches("бочка"));
@@ -50,7 +51,12 @@ class TodosTest {
     @Test
 
     public void searchTest() {
-        Task[] result1 = todos.search("Молоко");  // если запрос находит
+
+        todos.add(simpleTask);
+        todos.add(epic);
+        todos.add(meeting);
+
+        Task[] result1 = todos.search("Яйца");  // если запрос находит
         Assertions.assertEquals(1, result1.length);
 
         Task[] result2 = todos.search("Кефир");   // если запрос не находит
