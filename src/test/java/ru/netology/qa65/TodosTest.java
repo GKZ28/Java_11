@@ -69,7 +69,7 @@ class TodosTest {
         todos.add(simpleTask);
         todos.add(epic);
         todos.add(meeting);
-git 
+
         Task[] result2 = todos.search("Кефир");   // если запрос не находит
         Assertions.assertEquals(0, result2.length);
 
