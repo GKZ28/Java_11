@@ -9,17 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TodosTest {
 
     SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+    SimpleTask simpleTask1 = new SimpleTask(6, "Позвонить детям");
 
     String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
     Epic epic = new Epic(55, subtasks);
 
     Meeting meeting = new Meeting(
 
-            555,
-            "Выкатка 3й версии приложения",
-            "Приложение НетоБанка",
-            "Во вторник после обеда"
-    );
+            555, "Выкатка 3й версии приложения", "Приложение НетоБанка", "Во вторник после обеда");
 
     Todos todos = new Todos();
 
@@ -52,27 +49,39 @@ class TodosTest {
 
 
     @Test
-
-    public void searchTestFind() {
+    public void searchTestFoundOneResult() {
 
         todos.add(simpleTask);
         todos.add(epic);
         todos.add(meeting);
 
-        Task[] result1 = todos.search("Яйца");  // если запрос находит
-        Assertions.assertEquals(1, result1.length);
+        Task[] actual = todos.search("Яйца");  // если запрос находит
+        Task[] expected = {epic};
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void searchTestNotFind() {
+    public void searchTestNotFoundResult() {
 
         todos.add(simpleTask);
         todos.add(epic);
         todos.add(meeting);
 
-        Task[] result2 = todos.search("Кефир");   // если запрос не находит
-        Assertions.assertEquals(0, result2.length);
+        Task[] actual = todos.search("Кефир");   // если запрос не находит
+        Task[] expected = {};
+        Assertions.assertArrayEquals(expected, actual);
 
+    }
+
+    @Test
+
+    public void searchTestFoundFewResults() {
+        todos.add(simpleTask);
+        todos.add(simpleTask1);
+
+        Task[] actual = todos.search("Позвонить");
+        Task[] expected = {simpleTask, simpleTask1};
+        Assertions.assertArrayEquals(expected, actual);
     }
 
 }
